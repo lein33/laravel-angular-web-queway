@@ -1,3 +1,4 @@
+version:  '3.7'
 services:
   db:
     image: mysql
@@ -50,18 +51,14 @@ services:
       - 9000:80
     networks:
       - laravel
-
-  frontend:
-    image: 'angular-laravel-quewey'
-    container_name: frontend
-    # Build the image if don't exist
+  angular:
+    image: angular
     build: './frontend/wwwquewey'
+    environment: 
+      NODE_ENV: production
     ports:
-      - 3000:80
-    networks:
-      - laravel
-
+      - 5000:80
 networks:
   laravel:
 volumes:
-    persistent:
+  persistent:
