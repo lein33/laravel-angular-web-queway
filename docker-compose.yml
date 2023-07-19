@@ -1,0 +1,82 @@
+version: '3.3'
+
+# >>> SERVICES >>>
+services:  
+  # Nginx Service
+  nginx:
+    image: nginx:1.21
+    container_name: maestria-nginx
+    ports:
+      - 8085:80
+    volumes:
+      - ./server:/var/www/html
+#      - ./docker-config/laravel/.env:/var/www/html/eventos/.env
+      - ./docker-config/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - maestria-network
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PW}
+      DB_NAME: ${POSTGRES_DB}
+    depends_on:
+      - php-fpm
+    links:
+      - php-fpm
+
+  # PHP
+  php-fpm:
+    image: maestria/php:8.2-fpm
+    container_name: maestria-php
+    build:
+      context: .
+      dockerfile: ./docker-config/php/Dockerfile
+    volumes:
+      - ./server:/var/www/html
+    networks:
+      - maestria-network
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PW}@postgres:5432/${POSTGRES_DB}
+  
+  #  postgres
+  postgres:
+    container_name: maestria-postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5440:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - maestria-network
+  
+  #  PGADMIN
+  pgadmin:
+    container_name: maestria-pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_MAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PW}
+    ports:
+      - "5055:80"
+    restart: always
+    networks:
+      - maestria-network
+
+# >>> NETWORKS >>>
+networks:
+  maestria-network:
+    driver: bridge
+
+# >>> VOLUMES >>>
+volumes:
+  db_data:

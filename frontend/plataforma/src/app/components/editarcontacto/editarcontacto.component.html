@@ -1,0 +1,31 @@
+<div class="m-5">
+    <br> 
+    <div class="form-group" *ngFor="let j of contactos">
+        <ul>
+            <li>{{j.nombre}}</li>
+            <li>{{j.email}}</li>
+            <li>{{j.id}}</li>
+            <li>{{j.comentario}}</li>
+            <li>{{j.user_id.value}}</li>
+
+
+        </ul>
+    </div>     
+    <form [formGroup]="editForm"  (ngSubmit)="OnSubmit()">
+        <div class="form-group" *ngFor="let j of contactos">
+            <input type="text" class="form-control" placeholder={{j.email}} formControlName="email">
+            <input type="text" class="form-control" placeholder={{j.nombre}} formControlName="nombre">
+            <input type="text" class="form-control" placeholder={{j.telefono}} formControlName="telefono">
+            <input type="text" class="form-control" placeholder={{j.comentario}} formControlName="comentario">
+            <input type="number" class="form-control" placeholder={{j.user_id}} formControlName="user_id">
+
+        </div>
+        
+        <div class="form-group">
+            <button  class="btn btn-success" type="submit">crear</button>
+        </div>
+    </form>
+    
+
+</div>
+

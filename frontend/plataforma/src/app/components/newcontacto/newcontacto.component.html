@@ -1,0 +1,27 @@
+<div class="m-5">
+<br>
+    <form [formGroup]="nuevoForm"  (ngSubmit)="OnSubmit()">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="email" formControlName="email">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="telefono" formControlName="telefono">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="comentario" formControlName="comentario">
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" placeholder="user_id" formControlName="user_id">
+        </div>
+
+        <div class="form-group">
+            <button  class="btn btn-success" type="submit">crear</button>
+        </div>
+    </form>
+    
+     
+    <p>Los datos que has introducido son</p>
+</div>
