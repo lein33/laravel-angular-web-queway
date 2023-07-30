@@ -25,7 +25,7 @@ class ContactoFactory extends Factory
             'telefono' => $this->faker->randomNumber(6),
             'email' => $this->faker->email(),
             'comentario' => $this->faker->paragraph(1),
-            'user_id'=>  $this->faker->unique()->random(10, User::count())
+            'user_id'=>  $this->faker->unique()->numberBetween(1,6)
         ];
     }
 }

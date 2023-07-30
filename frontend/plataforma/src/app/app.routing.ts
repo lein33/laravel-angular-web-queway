@@ -6,6 +6,8 @@ import { ContactoComponent } from "./components/contacto/contacto.component";
 import { ErrorComponent } from "./components/error/error.component";
 import { NewcontactoComponent } from "./components/newcontacto/newcontacto.component";
 import { EditarcontactoComponent } from "./components/editarcontacto/editarcontacto.component";
+import { LoginComponent } from "./components/login/login.component";
+import { SignupComponent } from "./components/signup/signup.component";
 
 const appRoutes: Routes=[
     {path: '',component:InicioComponent},
@@ -13,7 +15,8 @@ const appRoutes: Routes=[
     {path: 'contacto',component:ContactoComponent},
     {path: 'contacto/new',component:NewcontactoComponent},
     {path: 'contacto/update/:id',component:EditarcontactoComponent},
-
+    {path: 'login',component:LoginComponent},
+    {path: 'signup',component:SignupComponent},
 
     {path: '**',component:ErrorComponent},
 

@@ -18,6 +18,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ObjectToArrayPipe } from './objectToArray.pipe';
 import { NewcontactoComponent } from './components/newcontacto/newcontacto.component';
 import { EditarcontactoComponent } from './components/editarcontacto/editarcontacto.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { EditarcontactoComponent } from './components/editarcontacto/editarconta
     ObjectToArrayPipe,
     UsuarioComponent,
     NewcontactoComponent,
-    EditarcontactoComponent
+    EditarcontactoComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
