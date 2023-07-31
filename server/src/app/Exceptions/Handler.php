@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use Error;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;

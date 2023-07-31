@@ -1,0 +1,48 @@
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -a -q)
+docker compose up -d --build
+docker container ls
+docker exec -it 26e /bin/sh
+chmod 777 -R var/www/html/storage/
+chmod 777 -R var/www/html/bootstrap/
+docker compose exec php php /var/www/html/artisan migrate
+docker network prune
+docker inspect 
+
+docker image rm
+
+puglins laravel vscode
+	Laravel Blade Snippets
+	laravel intellisense
+	php intelephense
+
+en el directorio antes del app
+composer require laravel/sail --dev
+
+ingrsar al directoria de la app
+php artisan sail:install
+./vendor/bin/sail up
+./vendor/bin/sail artisan make:migration create_categories_table
+ ./vendor/bin/sail artisan make:migrate rollback --step=5
+
+ ./vendor/bin/sail artisan make:model Disc -mcr
+ ./vendor/bin/sail artisan migrate
+ ./vendor/bin/sail artisan migrate:fresh
+
+./vendor/bin/sail artisan make:controller UserController
+./vendor/bin/sail artisan make:model User -m --api
+./vendor/bin/sail artisan route:list
+
+./vendor/bin/sail artisan make:request ActualizarUserRequest
+
+./vendor/bin/sail artisan make:resource UserResource
+
+
+sembrar datos con fake
+./vendor/bin/sail artisan db:seed --class=UserSeeder
+
+
+https://kinsta.com/es/blog/laravel-model-factories/
+
+https://www.youtube.com/watch?v=VZAxhiXHE7c

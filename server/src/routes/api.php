@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AutenticarController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\RolController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserRolController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +45,17 @@ Route::controller(AutenticarController::class)->prefix('registrar')->group(funct
     Route::post('/','registro');
       
     });
+
+Route::controller(RolController::class)->prefix('rols')->group(function(){
+    Route::get('/','index');
+    Route::get('/{rol}','show');
+    Route::post('/','store');
+
+    });
+
+
+    Route::controller(UserRolController::class)->prefix('user_rol')->group(function(){
+        Route::get('/','index');
+        Route::get('/{user_rol}','show');
+    
+        });

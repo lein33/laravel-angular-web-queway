@@ -21,7 +21,7 @@ class UserFactory extends Factory
     {
         return [
             'email' => $this->faker->email(),
-            'nombre' => $this->faker->name(45),
+            'nombre' => $this->faker->name(10),
             'celular' => $this->faker->randomNumber(5),
             'estado' => $this->faker->boolean(),
             ];

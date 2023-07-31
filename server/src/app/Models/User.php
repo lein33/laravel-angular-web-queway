@@ -25,4 +25,7 @@ class User extends Model
         #$contacto = Contacto::where('user_id',$this->id)->first();
         return $this->hasOne(Contacto::class);
     }
+    
+    
+    
 }
