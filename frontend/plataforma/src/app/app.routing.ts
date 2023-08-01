@@ -17,8 +17,7 @@ const appRoutes: Routes=[
     {path: 'contacto/update/:id',component:EditarcontactoComponent},
     {path: 'login',component:LoginComponent},
     {path: 'signup',component:SignupComponent},
-
-    {path: '**',component:ErrorComponent},
+    {path: '**',loadComponent:()=>import('./components/error/error.component').then(comp=>comp.ErrorComponent)},
 
 ]
 export const routing:ModuleWithProviders<Object>=RouterModule.forRoot(appRoutes);
