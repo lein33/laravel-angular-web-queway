@@ -25,5 +25,8 @@ export class UsuarioService{
     public registro(form:RegistroI):Observable<ResponseI>{
         return this.http.post<ResponseI>(urlRecord+'registrar/',form);
     } 
-    
+    public getUser(){
+        return localStorage.getItem('user');
+
+    }   
 }

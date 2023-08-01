@@ -20,6 +20,9 @@ import { NewcontactoComponent } from './components/newcontacto/newcontacto.compo
 import { EditarcontactoComponent } from './components/editarcontacto/editarcontacto.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { TokenService } from './services/token.service';
+import { UserRolService } from './services/user_rol.service';
+import { UsuarioService } from './services/usuario.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { SignupComponent } from './components/signup/signup.component';
     InicioComponent,
     ContactoComponent,
     PieComponent,
-    ErrorComponent,
+    //ErrorComponent,
     NavegacionComponent,
     ObjectToArrayPipe,
     UsuarioComponent,
@@ -46,7 +49,7 @@ import { SignupComponent } from './components/signup/signup.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TokenService,UserRolService,UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
